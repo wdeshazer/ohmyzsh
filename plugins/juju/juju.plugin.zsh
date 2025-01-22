@@ -165,7 +165,7 @@ jreld() {
 
 # Return Juju current controller
 jcontroller() {
-  local controller="$(awk '/current-controller/ {print $2}' ~/.local/share/juju/controllers.yaml)"
+  local controller="$(awk '/current-controller/ {print $2}' ${XDG_DATA_HOME:-~/.local}/share)/juju/controllers.yaml)"
   if [[ -z "$controller" ]]; then
     return 1
   fi
@@ -183,7 +183,7 @@ jmodel() {
     return 1
   fi
 
-  local model="$(yq e ".controllers.$(jcontroller).current-model" < ~/.local/share/juju/models.yaml | cut -d/ -f2)"
+  local model="$(yq e ".controllers.$(jcontroller).current-model" < ${XDG_DATA_HOME:-~/.local}/share)/juju/models.yaml | cut -d/ -f2)"
 
   if [[ -z "$model" ]]; then
     echo "--"

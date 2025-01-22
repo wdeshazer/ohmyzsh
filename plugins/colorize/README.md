@@ -8,7 +8,7 @@ is found it will just cat the file normally, without syntax highlighting.
 
 ## Setup
 
-To use it, add colorize to the plugins array of your `~/.zshrc` file:
+To use it, add colorize to the plugins array of your `${ZDOTDIR:-~}/.zshrc` file:
 ```
 plugins=(... colorize)
 ```

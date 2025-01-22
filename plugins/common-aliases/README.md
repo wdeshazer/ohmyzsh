@@ -33,7 +33,7 @@ plugins=(... common-aliases)
 | rm    | `rm -i`               | Remove a file                                                                   |
 | cp    | `cp -i`               | Copy a file                                                                     |
 | mv    | `mv -i`               | Move a file                                                                     |
-| zshrc | `${=EDITOR} ~/.zshrc` | Quickly access the ~/.zshrc file                                                |
+| zshrc | `${=EDITOR} ${ZDOTDIR:-~}/.zshrc` | Quickly access the ${ZDOTDIR:-~}/.zshrc file                                                |
 | dud   | `du -d 1 -h`          | Display the size of files at depth 1 in current location in human-readable form |
 | duf\* | `du -sh`              | Display the size of files in current location in human-readable form            |
 | t     | `tail -f`             | Shorthand for tail which outputs the last part of a file                        |

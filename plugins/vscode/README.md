@@ -3,7 +3,7 @@
 This plugin provides useful aliases to simplify the interaction between the command line and VS Code or
 VSCodium editor.
 
-To start using it, add the `vscode` plugin to your `plugins` array in `~/.zshrc`:
+To start using it, add the `vscode` plugin to your `plugins` array in `${ZDOTDIR:-~}/.zshrc`:
 
 ```zsh
 plugins=(... vscode)

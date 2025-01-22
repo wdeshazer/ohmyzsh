@@ -9,10 +9,10 @@ To use it, add `alias-finder` to the `plugins` array of your zshrc file:
 plugins=(... alias-finder)
 ```
 
-To enable it for every single command, set zstyle in your `~/.zshrc`.
+To enable it for every single command, set zstyle in your `${ZDOTDIR:-~}/.zshrc`.
 
 ```zsh
-# ~/.zshrc
+# ${ZDOTDIR:-~}/.zshrc
 
 zstyle ':omz:plugins:alias-finder' autoload yes # disabled by default
 zstyle ':omz:plugins:alias-finder' longer yes # disabled by default

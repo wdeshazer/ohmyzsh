@@ -3,7 +3,7 @@
 Plugin for Terraform, a tool from Hashicorp for managing infrastructure safely and efficiently. It adds
 completion for `terraform`, as well as aliases and a prompt function.
 
-To use it, add `terraform` to the plugins array of your `~/.zshrc` file:
+To use it, add `terraform` to the plugins array of your `${ZDOTDIR:-~}/.zshrc` file:
 
 ```shell
 plugins=(... terraform)

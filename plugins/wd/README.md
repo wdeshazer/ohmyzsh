@@ -99,14 +99,14 @@ wget --no-check-certificate https://github.com/mfaerevaag/wd/raw/master/install.
 1. Clone this repository on your local machine in a sensible location (if you know what you're doing of course all of this is up to you):
 
 ```zsh
-git clone git@github.com:mfaerevaag/wd.git ~/.local/wd --depth 1
+git clone git@github.com:mfaerevaag/wd.git ${XDG_DATA_HOME}/wd --depth 1
 ```
 
 2. Add `wd` function to `.zshrc` (or `.profile` etc.):
 
 ```zsh
 wd() {
-    . ~/.local/wd/wd.sh
+    . ${XDG_DATA_HOME}/wd/wd.sh
 }
 ```
 
@@ -115,7 +115,7 @@ wd() {
 Move manpage into an appropriate directory, then trigger `mandb` to discover it
 
 ```zsh
-sudo install -m 644 ~/.local/wd/wd.1 /usr/share/man/man1/wd.1
+sudo install -m 644 ${XDG_DATA_HOME}/wd/wd.1 /usr/share/man/man1/wd.1
 sudo mandb /usr/share/man/man1
 ```
 
@@ -124,7 +124,7 @@ sudo mandb /usr/share/man/man1
 ## Completion
 
 If you're NOT using [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) and you want to utilize the zsh-completion feature, you will also need to add the path to your `wd` installation (`~/bin/wd` if you used the automatic installer) to your `fpath`.
-E.g. in your `~/.zshrc`:
+E.g. in your `${ZDOTDIR:-~}/.zshrc`:
 
 ```zsh
 fpath=(~/path/to/wd $fpath)

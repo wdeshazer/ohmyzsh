@@ -7,7 +7,21 @@
 # The recommended way to use this script is to prepend its location to your $fpath:
 #
 #  fpath=($git_completion_srcdir $fpath)
+# For example, create a directory '~/.zsh/', copy this file to '~/.zsh/_git',
+# and then add the following to your ${ZDOTDIR:-~}/.zshrc file:
 #
+#  fpath=(~/.zsh $fpath)
+#
+# You need git's bash completion script installed. By default bash-completion's
+# location will be used (e.g. pkg-config --variable=completionsdir bash-completion).
+#
+# If your bash completion script is somewhere else, you can specify the
+# location in your ${ZDOTDIR:-~}/.zshrc:
+#
+#  zstyle ':completion:*:*:git:*' script ~/.git-completion.bash
+#
+
+local XDG_DATA_HOME=${XDG_DATA_HOME:-$HOME/.local/share}
 
 zstyle -T ':completion:*:*:git:*' tag-order && \
 	zstyle ':completion:*:*:git:*' tag-order 'common-commands'
@@ -22,7 +36,7 @@ if [ -z "$script" ]; then
 
 	locations=(
 		"${${funcsourcetrace[1]%:*}:A:h}"/git-completion.bash
-		"$HOME/.local/share/bash-completion/completions/git"
+		${XDG_DATA_HOME}/bash-completion/completions/git"
 		'/usr/local/share/bash-completion/completions/git'
 		"$bash_completion/git"
 		'/etc/bash_completion.d/git' # old debian

@@ -2,7 +2,7 @@
 
 This plugin adds aliases for searching with Google, Wiki, Bing, YouTube and other popular services.
 
-Open your `~/.zshrc` file and enable the `web-search` plugin:
+Open your `${ZDOTDIR:-~}/.zshrc` file and enable the `web-search` plugin:
 
 ```zsh
 plugins=( ... web-search)

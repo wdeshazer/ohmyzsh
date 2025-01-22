@@ -10,7 +10,7 @@ This plugin provides an interactive way to change directories in zsh using fzf.
 
 1. Install [fzf](https://github.com/junegunn/fzf) by following its [installation instruction](https://github.com/junegunn/fzf#installation).
 
-2. Add `zsh-interactive-cd` to your plugin list in `~/.zshrc`:
+2. Add `zsh-interactive-cd` to your plugin list in `${ZDOTDIR:-~}/.zshrc`:
 
    ```zsh
    plugins=(... zsh-interactive-cd)

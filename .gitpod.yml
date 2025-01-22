@@ -4,6 +4,6 @@ image:
 tasks:
   - init: |
       export EDITOR="command gp open -w" VISUAL="command gp open -w"
-      cp -f /workspace/ohmyzsh/templates/zshrc.zsh-template ~/.zshrc
+      cp -f /workspace/ohmyzsh/templates/zshrc.zsh-template ${ZDOTDIR:-~}/.zshrc
       ln -sf /workspace/ohmyzsh ~/.oh-my-zsh
     command: exec zsh

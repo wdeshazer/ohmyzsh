@@ -4,7 +4,7 @@
 # No plugin manager is needed to use this file. All that is needed is adding:
 #   source {where-znt-is}/zsh-navigation-tools.plugin.zsh
 #
-# to ~/.zshrc.
+# to ${ZDOTDIR:-~}/.zshrc.
 #
 
 # According to the standard:

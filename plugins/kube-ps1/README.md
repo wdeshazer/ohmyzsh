@@ -18,7 +18,7 @@ $ brew install kube-ps1
 ### From Source
 
 1. Clone this repository
-2. Source the kube-ps1.sh in your `~/.zshrc` or your `~/.bashrc`
+2. Source the kube-ps1.sh in your `${ZDOTDIR:-~}/.zshrc` or your `~/.bashrc`
 
 ### Arch Linux
 AUR Package available at [https://aur.archlinux.org/packages/kube-ps1/](https://aur.archlinux.org/packages/kube-ps1/).
@@ -118,7 +118,7 @@ kubeoff -g : turn off kube-ps1 status globally
 
 ## Customization
 
-The default settings can be overridden in `~/.bashrc` or `~/.zshrc` by setting
+The default settings can be overridden in `~/.bashrc` or `${ZDOTDIR:-~}/.zshrc` by setting
 the following environment variables:
 
 | Variable | Default | Meaning |

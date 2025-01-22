@@ -5,13 +5,13 @@ for a [Colemak](https://colemak.com/) keyboard layout, to match the QWERTY posit
 
 ![Colemak layout on a US keyboard](https://colemak.com/wiki/images/6/6c/Colemak2.png)
 
-To use it, add it to the plugins array in your `~/.zshrc` file:
+To use it, add it to the plugins array in your `${ZDOTDIR:-~}/.zshrc` file:
 
 ```
 plugins=(... colemak)
 ```
 
-You will also need to enable `vi` mode, so add another line to `~/.zshrc`:
+You will also need to enable `vi` mode, so add another line to `${ZDOTDIR:-~}/.zshrc`:
 ```
 bindkey -v
 ```

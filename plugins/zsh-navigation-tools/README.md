@@ -101,7 +101,7 @@ All tools support horizontal scroll with `<`,`>`, `{`,`}`, `h`,`l` or left and r
 
 ## Configuration
 
-`ZNT` has configuration files located in `~/.config/znt`. The files are:
+`ZNT` has configuration files located in `${XDG_CONFIG_HOME:-~/.config}/znt`. The files are:
 
 ```
 n-aliases.conf
@@ -158,7 +158,7 @@ znt_list_themes (array) - list of themes to try out with Ctrl-T, e.g. ( "white/b
 znt_list_instant_select - should pressing enter in search mode leave tool (0 or 1)
 ```
 
-If you used `ZNT` before `v2.1.12`, remove old configuration files `~/.config/znt/*.conf` so that `ZNT`
+If you used `ZNT` before `v2.1.12`, remove old configuration files `${XDG_CONFIG_HOME:-~/.config}/znt/*.conf` so that `ZNT`
 can update them to the latest versions that support integration with `Zshrc`. If you used installer
 then run it again (after the remove of configuration files).
 

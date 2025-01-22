@@ -2,7 +2,7 @@
 
 This plugin provides two aliases to URL-encode and URL-decode strings.
 
-To start using it, add the `urltools` plugin to your plugins array in `~/.zshrc`:
+To start using it, add the `urltools` plugin to your plugins array in `${ZDOTDIR:-~}/.zshrc`:
 
 ```zsh
 plugins=(... urltools)

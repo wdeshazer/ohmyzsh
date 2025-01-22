@@ -21,7 +21,7 @@
 [[ -n $DEBUG ]] && set -x
 
 # Default values for the prompt
-# Override these values in ~/.zshrc or ~/.bashrc
+# Override these values in ${ZDOTDIR:-~}/.zshrc or ~/.bashrc
 KUBE_PS1_BINARY="${KUBE_PS1_BINARY:-kubectl}"
 KUBE_PS1_SYMBOL_ENABLE="${KUBE_PS1_SYMBOL_ENABLE:-true}"
 KUBE_PS1_SYMBOL_DEFAULT=${KUBE_PS1_SYMBOL_DEFAULT:-$'\u2388'}

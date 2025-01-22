@@ -74,7 +74,7 @@ jira dumpconfig   # displays the effective configuration
 
 The URL for your JIRA instance is set by `$JIRA_URL` or a `.jira_url` file.
 
-Add a `.jira-url` file in the base of your project. You can also set `$JIRA_URL` in your `~/.zshrc` or put a `.jira-url` in your home directory. A `.jira-url` in the current directory takes precedence, so you can make per-project customizations.
+Add a `.jira-url` file in the base of your project. You can also set `$JIRA_URL` in your `${ZDOTDIR:-~}/.zshrc` or put a `.jira-url` in your home directory. A `.jira-url` in the current directory takes precedence, so you can make per-project customizations.
 
 The same goes with `.jira-prefix` and `$JIRA_PREFIX`. These control the prefix added to all issue IDs, which differentiates projects within a JIRA instance.
 

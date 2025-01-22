@@ -11,7 +11,7 @@ if ! type autoenv_init >/dev/null; then
   if [[ -z $autoenv_dir ]]; then
     install_locations=(
       ~/.autoenv
-      ~/.local/bin
+      ${XDG_DATA_HOME}/bin
       /usr/local/opt/autoenv
       /opt/homebrew/opt/autoenv
       /usr/local/bin

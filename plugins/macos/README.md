@@ -2,7 +2,7 @@
 
 This plugin provides a few utilities to make it more enjoyable on macOS (previously named OSX).
 
-To start using it, add the `macos` plugin to your plugins array in `~/.zshrc`:
+To start using it, add the `macos` plugin to your plugins array in `${ZDOTDIR:-~}/.zshrc`:
 
 ```zsh
 plugins=(... macos)

@@ -43,7 +43,7 @@ If the variable isn't set, the plugin will default to use `.env`.
 For example, this will make the plugin look for files named `.dotenv` and load them:
 
 ```zsh
-# in ~/.zshrc, before Oh My Zsh is sourced:
+# in ${ZDOTDIR:-~}/.zshrc, before Oh My Zsh is sourced:
 ZSH_DOTENV_FILE=.dotenv
 ```
 
@@ -66,7 +66,7 @@ The allowed and disallowed lists are saved by default in `$ZSH_CACHE_DIR/dotenv-
 change the `$ZSH_DOTENV_ALLOWED_LIST` and `$ZSH_DOTENV_DISALLOWED_LIST` variables, like so:
 
 ```zsh
-# in ~/.zshrc, before Oh My Zsh is sourced:
+# in ${ZDOTDIR:-~}/.zshrc, before Oh My Zsh is sourced:
 ZSH_DOTENV_ALLOWED_LIST=/path/to/dotenv/allowed/list
 ZSH_DOTENV_DISALLOWED_LIST=/path/to/dotenv/disallowed/list
 ```

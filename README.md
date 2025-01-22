@@ -136,7 +136,7 @@ Once you spot a plugin (or several) that you'd like to use with Oh My Zsh, you'l
 and you'll see a spot to list all the plugins you want to load.
 
 ```sh
-vi ~/.zshrc
+vi ${ZDOTDIR:-~}/.zshrc
 ```
 
 For example, this might begin to look like this:
@@ -173,7 +173,7 @@ Check them out!
 _Robby's theme is the default one. It's not the fanciest one. It's not the simplest one. It's just the right
 one (for him)._
 
-Once you find a theme that you'd like to use, you will need to edit the `~/.zshrc` file. You'll see an
+Once you find a theme that you'd like to use, you will need to edit the `${ZDOTDIR:-~}/.zshrc` file. You'll see an
 environment variable (all caps) in there that looks like:
 
 ```sh
@@ -303,10 +303,10 @@ REPO=apjanke/oh-my-zsh BRANCH=edge sh install.sh
 git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
 ```
 
-##### 2. _Optionally_, Backup Your Existing `~/.zshrc` File <!-- omit in toc -->
+##### 2. _Optionally_, Backup Your Existing `${ZDOTDIR:-~}/.zshrc` File <!-- omit in toc -->
 
 ```sh
-cp ~/.zshrc ~/.zshrc.orig
+cp ${ZDOTDIR:-~}/.zshrc ${ZDOTDIR:-~}/.zshrc.orig
 ```
 
 ##### 3. Create A New Zsh Configuration File <!-- omit in toc -->
@@ -314,7 +314,7 @@ cp ~/.zshrc ~/.zshrc.orig
 You can create a new zsh config file by copying the template that we have included for you.
 
 ```sh
-cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
+cp ~/.oh-my-zsh/templates/zshrc.zsh-template ${ZDOTDIR:-~}/.zshrc
 ```
 
 ##### 4. Change Your Default Shell <!-- omit in toc -->
@@ -333,10 +333,10 @@ Once you open up a new terminal window, it should load zsh with Oh My Zsh's conf
 
 If you have any hiccups installing, here are a few common fixes.
 
-- You _might_ need to modify your `PATH` in `~/.zshrc` if you're not able to find some commands after
+- You _might_ need to modify your `PATH` in `${ZDOTDIR:-~}/.zshrc` if you're not able to find some commands after
   switching to `oh-my-zsh`.
 - If you installed manually or changed the install location, check the `ZSH` environment variable in
-  `~/.zshrc`.
+  `${ZDOTDIR:-~}/.zshrc`.
 
 ### Custom Plugins And Themes
 
@@ -368,7 +368,7 @@ _Note: this is not compatible with `DISABLE_LS_COLORS=true`_
 <a name="remove-directories-aliases"></a>
 
 If you want to skip default Oh My Zsh aliases (those defined in `lib/*` files) or plugin aliases, you can use
-the settings below in your `~/.zshrc` file, **before Oh My Zsh is loaded**. Note that there are many different
+the settings below in your `${ZDOTDIR:-~}/.zshrc` file, **before Oh My Zsh is loaded**. Note that there are many different
 ways to skip aliases, depending on your needs.
 
 ```sh
@@ -437,7 +437,7 @@ zstyle ':omz:alpha:lib:git' async-prompt force
 ## Getting Updates
 
 By default, you will be prompted to check for updates every 2 weeks. You can choose other update modes by
-adding a line to your `~/.zshrc` file, **before Oh My Zsh is loaded**:
+adding a line to your `${ZDOTDIR:-~}/.zshrc` file, **before Oh My Zsh is loaded**:
 
 1. Automatic update without confirmation prompt:
 

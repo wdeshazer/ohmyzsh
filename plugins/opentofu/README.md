@@ -3,7 +3,7 @@
 Plugin for OpenTofu, a fork of Terraform that is open-source, community-driven, and managed by the Linux Foundation. It adds
 completion for `tofu` command, as well as aliases and a prompt function.
 
-To use it, add `opentofu` to the plugins array of your `~/.zshrc` file:
+To use it, add `opentofu` to the plugins array of your `${ZDOTDIR:-~}/.zshrc` file:
 
 ```shell
 plugins=(... opentofu)

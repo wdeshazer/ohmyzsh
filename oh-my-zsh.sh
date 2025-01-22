@@ -56,16 +56,30 @@ unset -f omz_f
 
 # Set ZSH_CACHE_DIR to the path where cache files should be created
 # or else we will use the default cache/
-[[ -n "$ZSH_CACHE_DIR" ]] || ZSH_CACHE_DIR="$ZSH/cache"
 
-# Make sure $ZSH_CACHE_DIR is writable, otherwise use a directory in $HOME
-if [[ ! -w "$ZSH_CACHE_DIR" ]]; then
-  ZSH_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/oh-my-zsh"
-fi
+newCacheDirTag () {
+  local tagPath=$1/CACHEDIR.TAG
+  [[ -f $tagPath ]] || cat <<-EOL > $tagPath
+  Signature: 8a477f597d28d172789f06886806bc55 
+  # This file is a cache directory tag created by fontconfig.
+  # For information about cache directory tags, see:
+  #       http://www.brynosaurus.com/cachedir/
+EOL
+}
+
+[[ -n "$ZSH_CACHE_DIR" ]] || ZSH_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/Zsh/cache"
+
+# Make sure $ZSH_CACHE_DIR is writable
+mkdir -p $ZSH_CACHE_DIR && export ZSH_CACHE_DIR
+[[ ! -w $ZSH_CACHE_DIR ]] &&  echo Cannot write to cache directory: $ZSH_CACHE_DIR && return 1
+newCacheDirTag $ZSH_CACHE_DIR
 
 # Create cache and completions dir and add to $fpath
-mkdir -p "$ZSH_CACHE_DIR/completions"
-(( ${fpath[(Ie)$ZSH_CACHE_DIR/completions]} )) || fpath=("$ZSH_CACHE_DIR/completions" $fpath)
+ZSH_COMP_DIR=$ZSH_CACHE_DIR/completions
+mkdir -p $ZSH_COMP_DIR && export ZSH_COMP_DIR || echo "Unable to make $ZSH_COMP_DIR"
+(( ${fpath[(Ie)ZSH_COMP_DIR]} )) || fpath+=($ZSH_COMP_DIR)
+
+newCacheDirTag $ZSH_COMP_DIR
 
 # Check for updates on initial load...
 source "$ZSH/tools/check_for_upgrade.sh"
@@ -73,7 +87,9 @@ source "$ZSH/tools/check_for_upgrade.sh"
 # Initializes Oh My Zsh
 
 # add a function path
-fpath=($ZSH/{functions,completions} $ZSH_CUSTOM/{functions,completions} $fpath)
+for zPath in $ZSH{,_CUSTOM}/{functions,completions} $ZSH_COMP_DIR; do
+  (( ${fpath[(Ie)zPath]} )) || fpath+=($zPath)
+done
 
 # Load all stock functions (from $fpath files) called below.
 autoload -U compaudit compinit zrecompile
@@ -106,8 +122,8 @@ else
 fi
 
 # Save the location of the current completion dump file.
-if [[ -z "$ZSH_COMPDUMP" ]]; then
-  ZSH_COMPDUMP="${ZDOTDIR:-$HOME}/.zcompdump-${SHORT_HOST}-${ZSH_VERSION}"
+if [[ -z $ZSH_COMPDUMP ]]; then
+  export ZSH_COMPDUMP="$ZSH_COMP_DIR/.zcompdump-${SHORT_HOST}-${ZSH_VERSION}"
 fi
 
 # Construct zcompdump OMZ metadata
@@ -137,11 +153,12 @@ if (( $zcompdump_refresh )) \
   || ! command grep -q -Fx "$zcompdump_revision" "$ZSH_COMPDUMP" 2>/dev/null; then
   # Use `tee` in case the $ZSH_COMPDUMP filename is invalid, to silence the error
   # See https://github.com/ohmyzsh/ohmyzsh/commit/dd1a7269#commitcomment-39003489
-  tee -a "$ZSH_COMPDUMP" &>/dev/null <<EOF
-
-$zcompdump_revision
-$zcompdump_fpath
+  tee -a "$ZSH_COMPDUMP" &>/dev/null <<-EOF
+  
+  $zcompdump_revision
+  $zcompdump_fpath
 EOF
+
 fi
 unset zcompdump_revision zcompdump_fpath zcompdump_refresh
 
@@ -199,7 +216,7 @@ for lib_file ("$ZSH"/lib/*.zsh); do
 done
 unset lib_file
 
-# Load all of the plugins that were defined in ~/.zshrc
+# Load all of the plugins that were defined in ${ZDOTDIR:-~}/.zshrc
 for plugin ($plugins); do
   _omz_source "plugins/$plugin/$plugin.plugin.zsh"
 done

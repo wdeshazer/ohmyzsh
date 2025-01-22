@@ -15,7 +15,7 @@ Source: https://gist.github.com/pjaspers/368394#gistcomment-1016
    plugins=(... pj)
    ```
 
-2. Set `$PROJECT_PATHS` in your ~/.zshrc:
+2. Set `$PROJECT_PATHS` in your ${ZDOTDIR:-~}/.zshrc:
 
    ```zsh
    PROJECT_PATHS=(~/src ~/work ~/"dir with spaces")

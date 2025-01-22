@@ -23,7 +23,7 @@ Install
 Using the [Homebrew]( https://brew.sh ) package manager:
 
     brew install zsh-history-substring-search
-    echo 'source $(brew --prefix)/share/zsh-history-substring-search/zsh-history-substring-search.zsh' >> ~/.zshrc
+    echo 'source $(brew --prefix)/share/zsh-history-substring-search/zsh-history-substring-search.zsh' >> ${ZDOTDIR:-~}/.zshrc
 
 Using [Fig](https://fig.io):
 
@@ -39,7 +39,7 @@ Using [Oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh):
 
         git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search
 
-2. Activate the plugin in `~/.zshrc`:
+2. Activate the plugin in `${ZDOTDIR:-~}/.zshrc`:
 
         plugins=( [plugins...] zsh-history-substring-search)
 
@@ -49,7 +49,7 @@ Using [Oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh):
 
 Using [zplug](https://github.com/zplug/zplug):
 
-1. Add this repo to `~/.zshrc`:
+1. Add this repo to `${ZDOTDIR:-~}/.zshrc`:
 
         zplug "zsh-users/zsh-history-substring-search", as: plugin
 
@@ -73,11 +73,11 @@ HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
 
 Using [Zinit](https://github.com/zdharma-continuum/zinit):
 
-1. Use the `Oh-my-zsh` Zinit snippet in `~/.zshrc`:
+1. Use the `Oh-my-zsh` Zinit snippet in `${ZDOTDIR:-~}/.zshrc`:
 
         zinit snippet OMZ::plugins/git/git.plugin.zsh`
 
-2. Load the plugin in `~/.zshrc`:
+2. Load the plugin in `${ZDOTDIR:-~}/.zshrc`:
 
         zinit load 'zsh-users/zsh-history-substring-search
         zinit ice wait atload'_history_substring_search_config'
@@ -247,5 +247,5 @@ https://github.com/zsh-users/zsh-history-substring-search.
 
 Everything above this section is a copy of the original upstream's README, so things may differ slightly when
 you're using this inside OMZ. In particular, you do not need to set up key bindings for the up and down arrows
-yourself in `~/.zshrc`; the OMZ plugin does that for you. You may still want to set up additional emacs- or
+yourself in `${ZDOTDIR:-~}/.zshrc`; the OMZ plugin does that for you. You may still want to set up additional emacs- or
 vi-specific bindings as mentioned above.
