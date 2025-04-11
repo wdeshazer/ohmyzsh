@@ -1,0 +1,20 @@
+0="${ZERO:-${${0:#$ZSH_ARGZERO}:-${(%):-%N}}}"
+0="${${(M)0:#/*}:-$PWD/$0}"
+
+unset VS && typeset -xgA VS=( 
+  [dir]=~'/AppBundles/Visual Studio Code - Insiders.app/Contents'
+  [config]=${XDG_CONFIG_HOME:-~/AppBundles/Configurations}/VSCode•Data )
+
+VS+=( 
+  [ko]=dir:config:cli:code:cache_dirs:cache_home
+
+  [cli]=${VS[dir]}/cli
+  [code]=${VS[dir]}/Resources/app/bin/code
+
+  [cache_dirs]=user-data,extensions
+  [cache_home]=config )
+
+export VSCODE_CLI_DATA_DIR=$VS[cli]
+
+autoload -Uz vsc vsc_{opts,show}
+

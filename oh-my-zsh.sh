@@ -87,7 +87,7 @@ source "$ZSH/tools/check_for_upgrade.sh"
 # Initializes Oh My Zsh
 
 # add a function path
-for zPath in $ZSH{,_CUSTOM}/{functions,completions} $ZSH_COMP_DIR; do
+for zPath in {$ZSH,$ZSH_CUSTOM}/{functions,completions} $ZSH_COMP_DIR; do
   (( ${fpath[(Ie)zPath]} )) || fpath+=($zPath)
 done
 

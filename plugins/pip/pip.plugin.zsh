@@ -9,6 +9,8 @@
 # If you would like to clear your cache, go ahead and do a
 # "zsh-pip-clear-cache".
 
+export ZSH_PIP_CACHE_FILE ZSH_PIP_INDEXES
+
 if [[ -d "${XDG_CACHE_HOME:-$HOME/.cache}/pip" ]]; then
   ZSH_PIP_CACHE_FILE="${XDG_CACHE_HOME:-$HOME/.cache}/pip/zsh-cache"
 else

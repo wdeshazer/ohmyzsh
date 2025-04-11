@@ -1,6 +1,8 @@
 # JSON Tools
 # Adds command line aliases useful for dealing with JSON
 
+local JSONTOOLS_METHOD=${JSONTOOLS_METHOD:-}
+
 # Check that user-defined method is installed
 if [[ -n "$JSONTOOLS_METHOD" ]]; then
   (( $+commands[$JSONTOOLS_METHOD] )) || unset JSONTOOLS_METHOD

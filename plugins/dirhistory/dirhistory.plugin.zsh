@@ -6,12 +6,12 @@
 #   ALT-UP moves to higher hierarchy (cd ..)
 #   ALT-DOWN moves into the first directory found in alphabetical order
 #
-
-dirhistory_past=($PWD)
-dirhistory_future=()
 export dirhistory_past
 export dirhistory_future
 export DIRHISTORY_SIZE=30
+
+dirhistory_past=($PWD)
+dirhistory_future=()
 
 alias cde='dirhistory_cd'
 
@@ -127,6 +127,7 @@ function dirhistory_zle_dirhistory_future() {
 
 zle -N dirhistory_zle_dirhistory_back
 zle -N dirhistory_zle_dirhistory_future
+local keymap
 
 for keymap in emacs vicmd viins; do
   # dirhistory_back
